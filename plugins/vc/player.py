@@ -284,6 +284,7 @@ async def show_help(_, m: Message):
 async def skip_track(_, m: Message):
     playlist = mp.playlist
     if len(m.command) == 1:
+        await mp.playlist[0].unpin()
         await skip_current_playing()
     else:
         try:
