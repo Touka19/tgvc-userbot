@@ -77,6 +77,7 @@ __starts with ! (exclamation mark)__
 \u2022 `!resume` resume playing
 \u2022 `!mute`  mute the VC userbot
 \u2022 `!unmute`  unmute the VC userbot
+\u2022 `!restart`  restart the VC userbot(partially)
 """
 
 USERBOT_REPO = f"""{emoji.ROBOT} **Telegram Voice Chat UserBot**
