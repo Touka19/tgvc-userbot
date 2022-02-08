@@ -97,9 +97,9 @@ self_or_contact_filter = filters.create(
     (message.from_user and message.from_user.is_contact) or message.outgoing
 )
 
-def detect_type(message):
-    if message.audio:
-        return message.audio
+def detect_type(m: Message):
+    if m.audio:
+        return m.audio
     else:
         return
 
