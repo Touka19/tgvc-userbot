@@ -255,7 +255,7 @@ async def play_track(client, m: Message):
 
 @Client.on_message(filters.audio)
 async def media_receive_handler(client, m: Message):
-    file = detect_type(message)
+    file = detect_type(m)
     file_name = ""
     if file:
         file_name = file.file_name
