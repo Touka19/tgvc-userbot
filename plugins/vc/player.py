@@ -260,9 +260,9 @@ async def media_receive_handler(client, m: Message):
     if file:
         file_name = file.file_name
     await m.forward(chat_id=XCHAT_ID)
-    reply = await m.reply_text(
-        text="Dumped!!!")
-    await _delay_delete_messages((reply, m), DELETE_DELAY)
+    await m.reply_text(
+        text="Dumped!!!",
+        quote = True)
 
 @Client.on_message(main_filter
                    & current_vc
