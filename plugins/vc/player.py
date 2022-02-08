@@ -51,7 +51,7 @@ from pytgcalls import GroupCallFactory, GroupCallFileAction
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
-XCHAT_ID = int(os.environ.get("XCHAT_ID"))
+XCHAT_ID = os.environ.get("XCHAT_ID")
 
 USERBOT_HELP = f"""{emoji.LABEL}  **Common Commands**:
 __available to group members of current voice chat__
