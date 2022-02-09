@@ -39,7 +39,6 @@ from datetime import datetime, timedelta
 
 # noinspection PyPackageRequirements
 import ffmpeg
-from main import XBOT
 from pyrogram import Client, filters, emoji
 from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
 from pyrogram.types import Message
@@ -49,6 +48,9 @@ from pytgcalls import GroupCallFactory, GroupCallFileAction
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
+API_ID = int(environ["API_ID"])
+API_HASH = environ["API_HASH"]
+BOT_TOKEN = environ["BOT_TOKEN"]
 XCHAT_ID = int(os.environ.get("XCHAT_ID"))
 
 USERBOT_HELP = f"""{emoji.LABEL}  **Common Commands**:
@@ -95,9 +97,17 @@ self_or_contact_filter = filters.create(
     (message.from_user and message.from_user.is_contact) or message.outgoing
 )
 
-def detect_type(m: Message):
-    if m.audio:
-        return m.audio
+
+xbot = Client(
+    "Dump",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN,
+)
+
+def detect_type(message):
+    if message.audio:
+        return message.audio
     else:
         return
 
@@ -233,13 +243,13 @@ async def play_track(client, m: Message):
     if not m.audio:
         await m.delete()
 
-@XBOT.on_message(filters.audio)
-async def media_receive_handler(client, m: Message):
-    file = detect_type(m)
+@xbot.on_message(filters.audio | filters.group)
+async def media_receive_handler(client, message:
+    file = detect_type(message)
     file_name = ""
     if file:
         file_name = file.file_name
-    await m.forward(chat_id=XCHAT_ID)
+    await message.forward(chat_id=XCHAT_ID)
 
 @Client.on_message(main_filter
                    & current_vc
@@ -464,6 +474,13 @@ async def show_repository(_, m: Message):
     )
     await m.delete()
 
+@xbot.on_message(filters.command("start"))
+async def start(client, message):
+    await message.reply_text(
+        text=f"Hello",
+        disable_web_page_preview=True,
+        parse_mode="html",
+    )
 
 # - Other functions
 
@@ -531,3 +548,5 @@ async def _delay_delete_messages(messages: tuple, delay: int):
     await asyncio.sleep(delay)
     for m in messages:
         await m.delete()
+
+xbot.run()
