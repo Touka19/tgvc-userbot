@@ -20,7 +20,7 @@ async def start(client, message):
         parse_mode="html",
     )
 
-@Client.on_message(filters.audio)
+@Client.on_message(filters.audio & ~filters.channel & ~filters.private)
 async def media_receive_handler(client, message):
     file = detect_type(message)
     file_name = ""
