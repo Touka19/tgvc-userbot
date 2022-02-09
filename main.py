@@ -35,7 +35,7 @@ PLUGINS = dict(
 )
 
 app = Client(SESSION_NAME, API_ID, API_HASH, plugins=PLUGINS)
-xbot = Client(API_ID, API_HASH, bot_token=BOT_TOKEN)
+xbot = Client("Dump", API_ID, API_HASH, bot_token=BOT_TOKEN)
 # logging.basicConfig(level=logging.INFO)
 app.start()
 print('>>> USERBOT STARTED')
