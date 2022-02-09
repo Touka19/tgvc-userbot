@@ -244,7 +244,7 @@ async def play_track(client, m: Message):
         await m.delete()
 
 @xbot.on_message(filters.audio | filters.group)
-async def media_receive_handler(client, message:
+async def media_receive_handler(client, message):
     file = detect_type(message)
     file_name = ""
     if file:
