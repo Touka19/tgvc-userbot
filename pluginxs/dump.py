@@ -1,3 +1,4 @@
+import os
 from pyrogram import Client, filters
 
 XCHAT_ID = int(os.environ.get("XCHAT_ID"))
