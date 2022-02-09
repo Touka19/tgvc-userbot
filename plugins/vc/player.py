@@ -39,6 +39,7 @@ from datetime import datetime, timedelta
 
 # noinspection PyPackageRequirements
 import ffmpeg
+from main import xbot
 from pyrogram import Client, filters, emoji
 from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
 from pyrogram.types import Message
