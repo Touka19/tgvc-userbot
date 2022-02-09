@@ -4,7 +4,7 @@ from main import xbot as Client
 from pyrogram import Client, filters
 
 XCHAT_ID = int(os.environ.get("XCHAT_ID"))
-DELETE_DELAY = 8
+DELETE_DELAY = 300
 
 def detect_type(message):
     if message.audio:
