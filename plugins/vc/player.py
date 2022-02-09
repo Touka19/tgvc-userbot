@@ -39,7 +39,7 @@ from datetime import datetime, timedelta
 
 # noinspection PyPackageRequirements
 import ffmpeg
-#from main import xbot
+from main import XBOT
 from pyrogram import Client, filters, emoji
 from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
 from pyrogram.types import Message
@@ -233,7 +233,7 @@ async def play_track(client, m: Message):
     if not m.audio:
         await m.delete()
 
-@xbot.on_message(filters.audio)
+@XBOT.on_message(filters.audio)
 async def media_receive_handler(client, m: Message):
     file = detect_type(m)
     file_name = ""
