@@ -2,4 +2,4 @@ build:
   docker:
     worker: Dockerfile
 run:
-  worker: bash x.sh
+  worker: bash /x.sh
