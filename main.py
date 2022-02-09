@@ -35,23 +35,6 @@ PLUGINS = dict(
 )
 
 app = Client(SESSION_NAME, API_ID, API_HASH, plugins=PLUGINS)
-
-class xbot(Client):
-
-    def __init__(self):
-        super().__init__("Dump", API_ID, API_HASH, bot_token=BOT_TOKEN)
-
-    async def start(self):
-        await super().start()
-        print(f"xbot with for Pyrogram started.")
-
-    async def stop(self, *args):
-        await super().stop()
-        print("Bot stopped. Bye.")
-
-
-XBOT = xbot()
-XBOT.run()
 # logging.basicConfig(level=logging.INFO)
 app.start()
 print('>>> USERBOT STARTED')
