@@ -48,9 +48,9 @@ from pytgcalls import GroupCallFactory, GroupCallFileAction
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
-API_ID = int(os.environ.get["API_ID"])
-API_HASH = os.environ.get["API_HASH"]
-BOT_TOKEN = os.environ.get["BOT_TOKEN"]
+API_ID = int(os.environ.get("API_ID"))
+API_HASH = os.environ.get("API_HASH")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 XCHAT_ID = int(os.environ.get("XCHAT_ID"))
 
 USERBOT_HELP = f"""{emoji.LABEL}  **Common Commands**:
