@@ -3,6 +3,7 @@ from main import xbot as Client
 from pyrogram import Client, filters
 
 XCHAT_ID = int(os.environ.get("XCHAT_ID"))
+DELETE_DELAY = 8
 
 def detect_type(message):
     if message.audio:
@@ -25,3 +26,10 @@ async def media_receive_handler(client, message):
     if file:
         file_name = file.file_name
     await message.forward(chat_id=XCHAT_ID)
+    reply = await message.reply_text(f"Dumpped")
+    await _delay_delete_messages((reply, message), DELETE_DELAY)
+    
+async def _delay_delete_messages(messages: tuple, delay: int):
+    await asyncio.sleep(delay)
+    for m in messages:
+        await message.delete()
