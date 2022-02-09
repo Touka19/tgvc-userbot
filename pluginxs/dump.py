@@ -1,5 +1,5 @@
 import os
-from main import xbot
+from main import xbot as Client
 from pyrogram import Client, filters
 
 XCHAT_ID = int(os.environ.get("XCHAT_ID"))
@@ -10,7 +10,7 @@ def detect_type(message):
     else:
         return
 
-@xbot.on_message(filters.command("start"))
+@Client.on_message(filters.command("start"))
 async def start(client, message):
     await message.reply_text(
         text=f"Hello",
@@ -18,7 +18,7 @@ async def start(client, message):
         parse_mode="html",
     )
 
-@xbot.on_message(filters.audio)
+@Client.on_message(filters.audio)
 async def media_receive_handler(client, message):
     file = detect_type(message)
     file_name = ""
