@@ -23,6 +23,7 @@ from pyrogram import Client, idle
 API_ID = int(environ["API_ID"])
 API_HASH = environ["API_HASH"]
 SESSION_NAME = environ["SESSION_NAME"]
+BOT_TOKEN = environ["BOT_TOKEN"]
 
 PLUGINS = dict(
     root="plugins",
