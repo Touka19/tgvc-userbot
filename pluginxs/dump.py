@@ -32,5 +32,5 @@ async def media_receive_handler(client, message):
     
 async def _delay_delete_messages(messages: tuple, delay: int):
     await asyncio.sleep(delay)
-    for m in messages:
+    for message in messages:
         await message.delete()
