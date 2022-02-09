@@ -39,12 +39,7 @@ app = Client(SESSION_NAME, API_ID, API_HASH, plugins=PLUGINS)
 class xbot(Client):
 
     def __init__(self):
-        super().__init__(
-            "Dump",
-            api_id=APP_ID,
-            api_hash=API_HASH,
-            bot_token=TG_BOT_TOKEN
-        )
+        super().__init__("Dump", API_ID, API_HASH, bot_token=BOT_TOKEN)
 
     async def start(self):
         await super().start()
