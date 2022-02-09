@@ -48,10 +48,6 @@ from pytgcalls import GroupCallFactory, GroupCallFileAction
 DELETE_DELAY = 8
 DURATION_AUTOPLAY_MIN = 10
 DURATION_PLAY_HOUR = 3
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
-XCHAT_ID = int(os.environ.get("XCHAT_ID"))
 
 USERBOT_HELP = f"""{emoji.LABEL}  **Common Commands**:
 __available to group members of current voice chat__
@@ -96,20 +92,6 @@ self_or_contact_filter = filters.create(
     lambda _, __, message:
     (message.from_user and message.from_user.is_contact) or message.outgoing
 )
-
-
-xbot = Client(
-    "Dump",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
-)
-
-def detect_type(message):
-    if message.audio:
-        return message.audio
-    else:
-        return
 
 
 async def current_vc_filter(_, __, m: Message):
@@ -242,14 +224,6 @@ async def play_track(client, m: Message):
         await download_audio(track)
     if not m.audio:
         await m.delete()
-
-@xbot.on_message(filters.audio | filters.group)
-async def media_receive_handler(client, message):
-    file = detect_type(message)
-    file_name = ""
-    if file:
-        file_name = file.file_name
-    await message.forward(chat_id=XCHAT_ID)
 
 @Client.on_message(main_filter
                    & current_vc
@@ -474,13 +448,6 @@ async def show_repository(_, m: Message):
     )
     await m.delete()
 
-@xbot.on_message(filters.command("start"))
-async def start(client, message):
-    await message.reply_text(
-        text=f"Hello",
-        disable_web_page_preview=True,
-        parse_mode="html",
-    )
 
 # - Other functions
 
@@ -548,5 +515,3 @@ async def _delay_delete_messages(messages: tuple, delay: int):
     await asyncio.sleep(delay)
     for m in messages:
         await m.delete()
-
-xbot.run()
