@@ -4,6 +4,6 @@ pytgcalls==3.0.0.dev21
 wheel
 Flask
 Gunicorn
-pyrogram
+pyrogram==1.4.15
 #git+https://github.com/subinps/pyrogram.git@session
 TgCrypto
